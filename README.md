@@ -29,3 +29,4 @@ project [Study]/
 ~~~
 
 잘 되네요^^
+애증의 git
