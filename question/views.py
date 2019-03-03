@@ -13,11 +13,16 @@ all=Questions.objects.all()
 question=random.choice(all)
 
 def main(request):
-    return render(request, 'question/main.html')
+    return render(request,'question/main.html')
 
+def root(request):
+    return redirect('/question/main/')
 def allpost(request):
-    allpost=Question.objects
+    allpost=Post.objects
     return render(request, 'question/allpost.html', {'allpost':allpost})
+
+
+
 
 def post(request):
     # current user 받아오기
