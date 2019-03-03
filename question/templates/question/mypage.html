@@ -4,7 +4,7 @@
 
 
 {% for allpost in allpost.all %}
-    {% if user.username == allpost.author %}
+    {% if {{user.username}} == {{allpost.author}} %}
     <div class='jumbotron'>
     <h4>{{allpost.question}}</h4>
     {{allpost.pub_date}} <br>
@@ -12,7 +12,4 @@
     </div>
     {% endif %}
 {% endfor %}
-
-
-
 {% endblock %}
