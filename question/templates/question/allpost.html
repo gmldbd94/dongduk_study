@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>all post</h1>
+<h1>다른 사람들은 어떤 답변을 했을까 ?.?</h1>
 
 {% for allpost in allpost.all %}
     <div class="jumbotron">
@@ -12,4 +12,6 @@
         {{allpost.answer}}
     </div>
 {% endfor %}
+
 {% endblock %}
+

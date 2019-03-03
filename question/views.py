@@ -17,6 +17,7 @@ def main(request):
 
 def root(request):
     return redirect('/question/main/')
+
 def allpost(request):
     allpost=Post.objects
     return render(request, 'question/allpost.html', {'allpost':allpost})
@@ -37,7 +38,7 @@ def create(request):
     post=Post() 
     post.pub_date=timezone.datetime.now()
     post.answer=request.GET['answer']
-    post.author=request.GET['author']
+    post.author=getpass.getpass
     post.question=question
     post.save()
     # 객체.delete()는 이 데이터객체를 지워라
