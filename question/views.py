@@ -11,7 +11,8 @@ def main(request):
     return render(request, 'question/main.html')
 
 def allpost(request):
-    return render(request, 'question/allpost.html')
+    allpost=Question.objects
+    return render(request, 'question/allpost.html', {'allpost':allpost})
 
 def post(request):
     # current user 받아오기

@@ -1,1 +1,11 @@
+{% extends 'base.html' %}
 <h1>all post</h1>
+
+{% for allpost in allpost.all %}
+    <div class="container">
+        {{allpost.author}}
+        {{allost.pub_date}}
+        {{allpost.question}}
+        {{allpost.answer}}
+
+{% endfor %}
