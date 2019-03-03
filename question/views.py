@@ -1,5 +1,7 @@
 from django.shortcuts import render
 import getpass # 현재 사용중인 유저 반환
+from .models import Questions, Post
+import random
 # Create your views here.
 
 
@@ -10,4 +12,5 @@ def allpost(request):
     return render(request, 'question/allpost.html')
 
 def post(request):
-    return render(request, 'question/post.html')
+    question=random.choice(Questions.objects.all)
+    return render(request, 'question/post.html', {'question':question})
