@@ -2,10 +2,10 @@
 <h1>all post</h1>
 
 {% for allpost in allpost.all %}
-    <div class="container">
-        {{allpost.author}}
-        {{allost.pub_date}}
-        {{allpost.question}}
+    <div class="jumbotron">
+        <h4>{{allpost.question}}</h4>
+        {{allpost.author}}|{{allost.pub_date}}
+        <br>
         {{allpost.answer}}
-
+    </div>
 {% endfor %}
