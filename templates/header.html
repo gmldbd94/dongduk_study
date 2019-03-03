@@ -17,6 +17,26 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav">
+									{% if user.is_authenticated %}
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false">환영합니다. {{ user.username }} 님!</a>
+										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<a class="dropdown-item" href="">글쓰기</a>
+											<a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+											<form id="logout" method="POST" action="">
+													{% csrf_token %} <input type="hidden" />
+											</form>
+										</div>
+									</li>
+									{% else %}
+									<li class="nav-item">
+										<a class="nav-item nav-link" href="{% url 'signup' %}">Signup</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+									</li>
+									{% endif %}
 								<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
 								<li class="nav-item"><a class="nav-link" href="category.html">Category</a></li>
 								<li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
