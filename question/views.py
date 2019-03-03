@@ -26,11 +26,12 @@ def allpost(request):
 
 
 def post(request):
-    # current user 받아오기
-
+    # current user 받아오기x 
+    # 페이지가 리로드 될때 전역변수였던 question은 변함 없기 때문에
+    all=Questions.objects.all()
+    question=random.choice(all)
     # Question 객체 중 랜덤 반환
-    # all=Questions.objects.all()
-    # question=random.choice(all)
+    
     return render(request, 'question/post.html', {'question':question})
 
 
@@ -38,7 +39,7 @@ def create(request):
     post=Post() 
     post.pub_date=timezone.datetime.now()
     post.answer=request.GET['answer']
-    post.author=getpass.getpass
+    post.author=request.user # 로그인한 사용자의 이름을 받아온다.
     post.question=question
     post.save()
     # 객체.delete()는 이 데이터객체를 지워라
@@ -66,3 +67,9 @@ def login(request):
             return render(request, 'question/login.html', {'error': 'username or password is incorrect.'})
     else:
         return render(request, 'question/login.html')
+
+def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        return redirect('/question/main/')
+    return render(request, 'question/signup.html')

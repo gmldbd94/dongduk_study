@@ -24,8 +24,8 @@
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 											<a class="dropdown-item" href="">글쓰기</a>
 											<a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
-											<form id="logout" method="POST" action="">
-													{% csrf_token %} <input type="hidden" />
+											<form id="logout" method="POST" action="{% url 'logout' %}">
+												{% csrf_token %} <input type="hidden" />
 											</form>
 										</div>
 									</li>
