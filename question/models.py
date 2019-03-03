@@ -4,3 +4,8 @@ from django.db import models
 
 class Questions(models.Model):
     content=models.TextField()
+
+class Post(models.Model):
+    question=
+    answer=
+    author=
