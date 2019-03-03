@@ -17,10 +17,44 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 							<ul class="nav navbar-nav menu_nav">
+<<<<<<< HEAD
 								<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
 								<li class="nav-item"><a class="nav-link" href=#>Join Us</a></li>
 								<li class="nav-item"><a class="nav-link" href=#>LogIn</a></li>
 								<li class="nav-item"><a class="nav-link" href="#">LIKELION</a></li>
+=======
+									{% if user.is_authenticated %}
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false">환영합니다. {{ user.username }} 님!</a>
+										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<a class="dropdown-item" href="">글쓰기</a>
+											<a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+											<form id="logout" method="POST" action="">
+													{% csrf_token %} <input type="hidden" />
+											</form>
+										</div>
+									</li>
+									{% else %}
+									<li class="nav-item">
+										<a class="nav-item nav-link" href="{% url 'signup' %}">Signup</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+									</li>
+									{% endif %}
+								<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+								<li class="nav-item"><a class="nav-link" href="category.html">Category</a></li>
+								<li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+										<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
+									</ul>
+								</li>
+								<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+>>>>>>> ec8e26d1350e7e886f2287d2289df7734375b9fc
 							</ul>
 							<ul class="nav navbar-nav navbar-right ml-auto">
 								<li class="nav-item"><a href="#" class="search"><i class="lnr lnr-magnifier"></i></a></li>
