@@ -4,8 +4,7 @@
 {{question}}
 <hr />
 답변하기
-<form action="">
-{% csrf_token %}
+<form action="{% url 'create'%}">
 <input type="hidden" name="author" value="">
 <input type="hidden" name="question" value="{{question}}">
 <textarea cols="20" rows="4" name="answer"></textarea>
