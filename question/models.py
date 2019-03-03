@@ -1,12 +1,15 @@
 from django.db import models
 
+
 # Create your models here.
 
 class Questions(models.Model):
-    content=models.TextField()
+    content=models.TextField(null=False)
 
 class Post(models.Model):
-    #question=
+
     pub_date=models.DateTimeField('data published')
-    #answer=
-    #author=
+    question=models.ForeignKey(Questions,on_delete=models.CASCADE)
+    answer=models.TextField(null=False)
+    author=models.TextField(null=False) # 현재 사용중인 user 반환하여 views.py에서 str
+

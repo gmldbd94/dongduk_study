@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+import getpass # 현재 사용중인 유저 반환
 # Create your views here.
 
 
