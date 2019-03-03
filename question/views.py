@@ -7,16 +7,20 @@ from django.contrib import auth
 from django.utils import timezone 
 # Create your views here.
 
+
 global question
 global all
 all=Questions.objects.all()
 question=random.choice(all)
+# global 사용한 이유 : user - question 을 연결하기 위해
+
 
 def main(request):
     return render(request,'question/main.html')
 
 def root(request):
     return redirect('/question/main/')
+    
 def allpost(request):
     allpost=Post.objects
     return render(request, 'question/allpost.html', {'allpost':allpost})
@@ -26,10 +30,9 @@ def allpost(request):
 
 def post(request):
     # current user 받아오기
-
     # Question 객체 중 랜덤 반환
-    # all=Questions.objects.all()
-    # question=random.choice(all)
+    all=Questions.objects.all()
+    question=random.choice(all)
     return render(request, 'question/post.html', {'question':question})
 
 
