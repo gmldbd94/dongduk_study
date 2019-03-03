@@ -6,6 +6,7 @@ class Questions(models.Model):
     content=models.TextField()
 
 class Post(models.Model):
-    question=
-    answer=
-    author=
+    #question=
+    pub_date=models.DateTimeField('data published')
+    #answer=
+    #author=
