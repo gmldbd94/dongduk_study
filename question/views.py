@@ -5,6 +5,7 @@ import random
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.utils import timezone 
+from operator import eq
 # Create your views here.
 
 
@@ -74,3 +75,13 @@ def logout(request):
         auth.logout(request)
         return redirect('/question/main/')
     return render(request, 'question/signup.html')
+
+def mypage(request):
+    post_list=list()
+    allpost=Post.objects
+    
+    for post in allpost.all:
+        if eq(request.user,allpost.author):
+            post_list.add(post)
+
+    return render(request, 'question/mypage.html',{'allpost':post_list})
