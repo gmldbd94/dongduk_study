@@ -76,4 +76,5 @@ def logout(request):
     return render(request, 'question/signup.html')
 
 def mypage(request):
+    
     return render(request, 'question/mypage.html')
