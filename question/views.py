@@ -12,5 +12,6 @@ def allpost(request):
     return render(request, 'question/allpost.html')
 
 def post(request):
-    question=random.choice(Questions.objects.all)
+    all=Questions.objects.all()
+    question=random.choice(all)
     return render(request, 'question/post.html', {'question':question})
