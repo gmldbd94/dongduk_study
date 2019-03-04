@@ -77,5 +77,10 @@ def logout(request):
     return render(request, 'question/signup.html')
 
 def mypage(request):
-    mypost = Post.objects.get(user=request.user)
-    return render(request, 'question/mypage.html', {'mypost':mypost})
+    post_list=list()
+    allpost=Post.objects.all()
+    for post in allpost:
+        if str(request.user)==post.author:
+            # request.user 와 post.author의 타입이 달라 str() 로 맞춰줌
+            post_list.append(post.answer)
+    return render(request, 'question/mypage.html',{'allpost':post_list})
