@@ -120,4 +120,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+STATICFILES_DIR=[
+    os.path.join(BASE_DIR,'question','static')
+] 
+# portfolio 앱 안에 static 폴더 안에 있다고 한 것임
+STATIC_ROOT=os.path.join(BASE_DIR,'static')
+# static 파일들이 어디로 모일것인 지.
+# 최상위 폴더 안에 static 새로 생성
 STATIC_URL = '/static/'
