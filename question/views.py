@@ -77,16 +77,5 @@ def logout(request):
     return render(request, 'question/signup.html')
 
 def mypage(request):
-<<<<<<< HEAD
-    post_list=list()
-    allpost=Post.objects
-    
-    for post in allpost.all:
-        if eq(request.user,allpost.author):
-            post_list.add(post)
-
-    return render(request, 'question/mypage.html',{'allpost':post_list})
-=======
-    
-    return render(request, 'question/mypage.html')
->>>>>>> 58d67ee9f7cfd2991214fcc9185bedf1f37e7e7f
+    mypost = Post.objects.get(user=request.user)
+    return render(request, 'question/mypage.html', {'mypost':mypost})
