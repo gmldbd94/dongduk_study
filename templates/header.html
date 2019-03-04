@@ -24,7 +24,8 @@
 										<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
 											aria-haspopup="true" aria-expanded="false">환영합니다. {{ user.username }} 님!</a>
 										<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-											<a class="dropdown-item" href="">글쓰기</a>
+											<a class="dropdown-item" href="{% url 'post' %}">글쓰기</a>
+											<a class="dropdown-item" href="{% url 'mypage' %}">mypage</a>
 											<a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
 											<form id="logout" method="POST" action="{% url 'logout' %}">
 												{% csrf_token %} <input type="hidden" />
@@ -39,17 +40,9 @@
 										<a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
 									</li>
 									{% endif %}
-								<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-								<li class="nav-item"><a class="nav-link" href="category.html">Category</a></li>
-								<li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
+								<li class="nav-item active"><a class="nav-link" href="{% url 'main' %}">Home</a></li>
+								<li class="nav-item active"><a class="nav-link" href="{% url 'allpost' %}">모든 글 보기</a></li>
 								<li class="nav-item submenu dropdown">
-									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
-									<ul class="dropdown-menu">
-										<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-										<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
-									</ul>
-								</li>
-								<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right ml-auto">
 								<li class="nav-item"><a href="#" class="search"><i class="lnr lnr-magnifier"></i></a></li>
