@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')rz3ibn81hrah625&nqhv$1qez1kzrg$b6(t4t85l5ts#xmc6y'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', ')rz3ibn81hrah625&nqhv$1qez1kzrg$b6(t4t85l5ts#xmc6y')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+# DEBUG = True
+DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -131,3 +131,7 @@ STATIC_URL = '/static/'
 
 # abstractuser 사용하기 위한 api
 AUTH_USER_MODEL = "question.User"
+
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
