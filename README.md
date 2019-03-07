@@ -33,5 +33,16 @@ project [Study]/
 
 구현할 내용
 1. 댓글기능
+-모델 생성
+-form 태그에 적용
+-view 만들기
 2. 태그 기능
 3. session값을 통한 화면 구축
+
+3.6 일지
+~~~
+pip install Pillow
+~~~
+모델에서 쉽게 이미지를 다루기위한 api설치해준다.
+
+혹시 에러가 뜬다면 question.migrations 안에있는 initial.py를 지운다.

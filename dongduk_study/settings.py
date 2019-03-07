@@ -97,7 +97,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
-    {
+    {s
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
@@ -128,3 +128,6 @@ STATIC_ROOT=os.path.join(BASE_DIR,'static')
 # static 파일들이 어디로 모일것인 지.
 # 최상위 폴더 안에 static 새로 생성
 STATIC_URL = '/static/'
+
+# abstractuser 사용하기 위한 api
+AUTH_USER_MODEL = "question.User"

@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect
 import getpass # 현재 사용중인 유저 반환
 from .models import Questions, Post
+from . import models
 import random
 from django.contrib.auth.models import User
 from django.contrib import auth
-from django.utils import timezone 
+from django.utils import timezone
+from . import form as form_field
 from operator import eq
 # Create your views here.
 
-
+#
 global question
 global all
 all=Questions.objects.all()
@@ -23,7 +25,7 @@ def root(request):
     return redirect('/question/main/')
     
 def allpost(request):
-    allpost=Post.objects
+    allpost = Post.objects.all()
     return render(request, 'question/allpost.html', {'allpost':allpost})
 
 
@@ -84,3 +86,26 @@ def mypage(request):
             # request.user 와 post.author의 타입이 달라 str() 로 맞춰줌
             post_list.append(post.answer)
     return render(request, 'question/mypage.html',{'allpost':post_list})
+
+#댓글 작성
+def comments(request, post_id):
+    form = form_field.CommentForm(request.POST or None)
+    if form.is_valid():
+        print("create")
+        comment = form.save()
+        comment.post = models.User.objects.get(pk=post_id)
+        comment.save
+        redirect('comment_create', {'post_id':post_id})
+
+    redirect('allpost')
+
+
+# 댓글 삭제
+def commnet_delete(reqeust, post_id, comment_id):
+    pass
+# 댓글 수정
+def commnet_update(reqeust, post_id, comment_id):
+    pass
+# 댓글 보기
+# def commnets(request, post_id):
+#     pass
